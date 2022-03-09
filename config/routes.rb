@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  # Default landing page
+  root "articles#index" 
+  
+  # get "/articles", to: "articles#index"
+  # get "/articles/:id", to: "articles#show" 
+  resources :articles # this the shorcut to those^
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
