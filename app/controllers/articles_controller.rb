@@ -1,23 +1,51 @@
-class ArticlesController < ApplicationController
-  def index # home page
-    @articles = Article.all
-  end
+class ArticlesController < ApplicationController	
+	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show] 
 
-  def show # show an article
-    @article = Article.find(params[:id])
-  end
-
-  def new # new instance of Article
-    @article = Article.new
-  end
-
-  def create # create new article
-    @article = Article.new(title: "...", body: "...")
+	def index # home page
+		@articles = Article.all
+	end
     
-    if @article.save # if save was success
-      redirect_to @article
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+	def show # show an article
+		@article = Article.find(params[:id])
+	end
+
+	def new # new instance of Article
+		@article = Article.new
+	end
+
+	def create # create new article
+		@article = Article.new(article_params)
+    
+	    if @article.save # if save was success
+		redirect_to @article
+	    else
+		render :new, status: :unprocessable_entity
+	    end
+	end
+
+	def edit # edit an article
+		@article = Article.find(params[:id])
+	end
+
+	def update # update new article
+		@article = Article.find(params[:id])
+	    
+		if @article.update(article_params) # if update was success
+			redirect_to @article
+		else
+			render :edit, status: :unprocessable_entity
+		end
+	end
+
+	def destroy
+		@article = Article.find(params[:id])
+		@article.destroy
+
+		redirect_to root_path, status: :see_other	
+	end
+	  
+	private
+	def article_params
+		params.require(:article).permit(:title, :body, :status)
+	end
 end
