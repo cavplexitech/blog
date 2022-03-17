@@ -75,6 +75,12 @@ gem 'secure_headers'
 # Very simple Roles library without any authorization enforcement supporting scope on resource object.
 gem 'rolify'
 
+# Build reusable, testable & encapsulated view components in Ruby on Rails
+gem 'view_component'
+
+# Allows the records of a Ruby on Rails ActiveRecord model to be organised as a tree structure (or hierarchy)
+gem 'ancestry'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
