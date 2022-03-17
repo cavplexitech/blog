@@ -186,6 +186,7 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
+    rolify (6.0.0)
     rsolr (2.5.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
@@ -203,6 +204,7 @@ GEM
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    secure_headers (6.3.3)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -265,7 +267,9 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
+  rolify
   rubocop
+  secure_headers
   selenium-webdriver
   sprockets-rails
   stimulus-rails

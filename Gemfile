@@ -69,6 +69,12 @@ gem 'okcomputer'
 # Authorization library which restricts what resources a given user is allowed to access.
 gem 'cancancan'
 
+# Automatically apply several headers that are related to security
+gem 'secure_headers'
+
+# Very simple Roles library without any authorization enforcement supporting scope on resource object.
+gem 'rolify'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
