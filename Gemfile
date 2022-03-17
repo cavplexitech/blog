@@ -81,6 +81,11 @@ gem 'view_component'
 # Allows the records of a Ruby on Rails ActiveRecord model to be organised as a tree structure (or hierarchy)
 gem 'ancestry'
 
+# reducing the number of queries it makes
+gem 'bullet', group: 'development'
+# gem 'ruby-growl'
+# gem 'ruby_gntp'
+ 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
