@@ -9,10 +9,10 @@
         <li class="nav-item">
 		      <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-		      <%= link_to "Create New Article", new_article_path, class: "nav-link" %>
-        </li>
 		<% if Current.user  %>
+        <li class="nav-item">
+		      <%= link_to "Create Article", new_article_path, class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to Current.user.email, root_path, class: "nav-link" %>
         </li>

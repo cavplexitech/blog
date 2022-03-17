@@ -2,8 +2,7 @@ class PasswordsController < ApplicationController
   # allows only logged in users
   before_action :require_login!
 
-  def edit
-  end
+  def edit; end
 
   def update
     # update user password
@@ -15,6 +14,7 @@ class PasswordsController < ApplicationController
   end
 
   private
+
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
   end
