@@ -2,7 +2,7 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
-local:
+local: # Declare a disk service
   service: Disk
   root: <%= Rails.root.join("storage") %>
 

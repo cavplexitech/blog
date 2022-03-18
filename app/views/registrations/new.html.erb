@@ -16,6 +16,11 @@
   </p>
 
   <p>
+  <%= form.label 'Profile picture'%><br>
+  <%= form.file_field :profile_picture %>
+  </p>
+
+  <p>
   <%= form.submit 'Sign Up' %>
   </p>
 <% end %>

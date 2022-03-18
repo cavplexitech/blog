@@ -1,0 +1,2 @@
+<strong>Profile of </strong><%= image_tag @user.profile_picture %>
+

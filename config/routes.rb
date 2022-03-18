@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
+  get 'sessions/show', to: 'sessions#show'
+
   # Default landing page
   root 'articles#index'
 
