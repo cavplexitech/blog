@@ -59,6 +59,9 @@ gem 'sunspot_rails'
 
 # Rubocop Ruby static code analyzer (a.k.a. linter) and code formatter based on the Ruby Style Guide (https://rubystyle.guide/)
 gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec', require: false
 
 # Securely configure Rails applications
 gem 'figaro'
