@@ -49,7 +49,7 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '>= 1.2'
 
 # Solr-powered search for Ruby objects
 gem 'sunspot_rails'
@@ -60,7 +60,7 @@ gem 'rubocop', require: false
 # Securely configure Rails applications
 gem 'figaro'
 
-# Catch unsafe migrations in development 
+# Catch unsafe migrations in development
 gem 'strong_migrations'
 
 # Provides a robust endpoint to perform server health checks
@@ -85,7 +85,7 @@ gem 'ancestry'
 gem 'bullet', group: 'development'
 # gem 'ruby-growl'
 # gem 'ruby_gntp'
- 
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
