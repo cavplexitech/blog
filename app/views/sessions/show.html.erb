@@ -1,8 +1,0 @@
-<strong>Profile of </strong><%= @user.email %>
-<% if @user.profile_picture.attached? %>
-  <%= image_tag url_for(@user.profile_picture.variant(resize_to_limit: [100,100])) %>
-<% elsif %>
-  <%= image_tag 'default_dp.jpg', size: '100x100' %>
-<% end %>
-
-

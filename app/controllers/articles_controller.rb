@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :require_login!, except: %i[index show search destroy]
+  # before_action :require_login!, except: %i[index show search destroy]
 
   def index # home page
     @articles = Article.all
