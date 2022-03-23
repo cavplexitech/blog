@@ -1,0 +1,9 @@
+<% unless @articles.nil? %>  
+	<% @articles.each do |article| %>
+ 	<% unless article.archived? %>
+ 	<li>
+ 		<%= link_to article.title, article %>
+ 	</li>
+ 	<% end %>
+ <% end %>
+<% end %>

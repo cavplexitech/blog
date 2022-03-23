@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   # get "/articles/:id", to: "articles#show"
   # this the shorcut to those^
   resources :articles do
+    collection do # search action for articles
+      get :search
+    end
     resources :comments
   end
 

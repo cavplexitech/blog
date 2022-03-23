@@ -38,11 +38,15 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
       </li> -->
+      <%= form_tag(search_articles_path, method: :get, class: 'd-flex') do %>
+        <%= text_field_tag(:query, params[:query], class: 'form-control me-2') %>
+        <%= submit_tag('Search', class: 'btn btn-outline-success') %>
+      <% end %>
       </ul>
-      <form class="d-flex">
+      <!-- j<form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>

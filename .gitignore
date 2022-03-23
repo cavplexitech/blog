@@ -36,3 +36,12 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Sabi kasi sa solr documentation haha
+# /solr/
+# /solr/test/data
+# /solr/development/data
+# /solr/default/data
+# /solr/pids
+
+/config/credentials/development.key

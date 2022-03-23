@@ -248,6 +248,7 @@ GEM
     sunspot_rails (2.5.0)
       rails (>= 3)
       sunspot (= 2.5.0)
+    sunspot_solr (2.5.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.1)
@@ -306,7 +307,8 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   strong_migrations
-  sunspot_rails
+  sunspot_rails (~> 2.2, >= 2.2.5)
+  sunspot_solr
   turbo-rails
   tzinfo-data
   view_component

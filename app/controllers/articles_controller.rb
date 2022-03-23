@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :require_login!, except: %i[index show]
+  before_action :require_login!, except: %i[index show search destroy]
 
   def index # home page
     @articles = Article.all
@@ -42,6 +42,17 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def search
+    @articles = Article.search do
+      keywords(params[:query])
+    end.results
+
+    respond_to do |format|
+      format.html { render action: 'search' } 
+      format.xml { render xml: @articles } 
+    end
   end
 
   private

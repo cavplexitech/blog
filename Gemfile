@@ -54,9 +54,6 @@ gem 'mini_magick'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '>= 1.2'
 
-# Solr-powered search for Ruby objects
-gem 'sunspot_rails'
-
 # Rubocop Ruby static code analyzer (a.k.a. linter) and code formatter based on the Ruby Style Guide (https://rubystyle.guide/)
 gem 'rubocop', require: false
 gem 'rubocop-performance', require: false
@@ -91,6 +88,10 @@ gem 'ancestry'
 gem 'bullet', group: 'development'
 # gem 'ruby-growl'
 # gem 'ruby_gntp'
+
+# solr search engine gem
+gem 'sunspot_rails', '~> 2.2', '>= 2.2.5'
+gem 'sunspot_solr'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
