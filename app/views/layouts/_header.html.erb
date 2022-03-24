@@ -9,18 +9,29 @@
         <li class="nav-item">
 		      <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
+        <% if user_signed_in? # checks if a user is signed in %>
         <li class="nav-item">
 		      <%= link_to "Create Article", new_article_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to current_user.email, profiles_show_path, class: "nav-link" %>
+        </li>
+        <% if current_user.has_role? :admin %>
+        <li class="nav-item">
+          <%= link_to "Admin", profiles_show_path, class: "nav-link" %>
+        </li>
+      <% end %>
+        <li class="nav-item">
+		      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-dark" %>
+        </li>
+      <% else %>
         <li class="nav-item">
 		      <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
 		      <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-		      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-dark" %>
-        </li>
+      <% end %>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -32,11 +43,11 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
       </li> -->
+      </ul>
       <%= form_tag(search_articles_path, method: :get, class: 'd-flex') do %>
         <%= text_field_tag(:query, params[:query], class: 'form-control me-2') %>
         <%= submit_tag('Search', class: 'btn btn-outline-success') %>
       <% end %>
-      </ul>
       <!-- j<form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

@@ -64,7 +64,7 @@ gem 'rubocop-rspec', require: false
 gem 'figaro'
 
 # Catch unsafe migrations in development
-gem 'strong_migrations'
+# gem 'strong_migrations'
 
 # Provides a robust endpoint to perform server health checks
 gem 'okcomputer'
