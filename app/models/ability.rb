@@ -5,17 +5,17 @@ class Ability
 
   def initialize(user)
 
-    # can :read, Article
+     can :read, Article
 
-    # return unless user.present?
+     return unless user.present?
 
-    # can [:read, :update, :delete], Article, user: user
+     can [:read, :update, :delete], Article, user: user
     
-    # return unless user.admin?
+     return unless user.admin?
 
-    # can :read, Article
-    # can :update, Article
-    #
+     can :read, Article
+     can :update, Article
+    
    # =========================================== 
     #
     # Define abilities for the passed in user here. For example:
