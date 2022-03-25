@@ -1,1 +1,8 @@
-Profile of <strong><%= current_user.name %></strong>
+<% if current_user.avatar.attached? %>
+  <%= image_tag current_user.avatar, size: "75x75" %>
+<% else %>
+  <%= image_tag "default_avatar.jpg", size: "75x75" %>
+<% end %>
+<br><br>
+<strong>Name: </strong><%= current_user.name %><br> 
+<strong>Email: </strong><%= current_user.email %>
