@@ -50,8 +50,8 @@ class ArticlesController < ApplicationController
     end.results
 
     respond_to do |format|
-      format.html { render action: 'search' } 
-      format.xml { render xml: @articles } 
+      format.html { render action: 'search' }
+      format.xml { render xml: @articles }
     end
   end
 
