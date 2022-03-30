@@ -2,7 +2,7 @@
 
 <p><%= @article.body %></p>
 
-<p><strong>Author: </strong><%= @article.user.name %></p>
+<p><strong>Author: </strong><%= @article.user.email %></p>
 
 <ul>
 	<li><%= link_to "Edit", edit_article_path(@article) %></li>
