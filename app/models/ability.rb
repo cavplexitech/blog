@@ -4,17 +4,14 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-   # can :read, Article
+    can :read, Article
 
-   # if user.present? # change
-   #   can %i[read create update delete], Article
-   #   
-   #   if user.has_role? :admin
-   #     can :manage, :all
-   #   end 
-   #  
-   # end
+    return unless user.present?
+    can [:create, :update, :delete], Article, user: user 
 
+    return unless user.has_role? :admin
+    can [:create, :update, :delete], Article
+     
     # ===========================================
     #
     # Define abilities for the passed in user here. For example:

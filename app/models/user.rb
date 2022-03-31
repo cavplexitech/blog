@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          # :lockable, :timeoutable, :trackable
 
+  has_one :profile, dependent: :destroy
   has_many :articles, dependent: :destroy
-  has_one_attached :avatar
+  accepts_nested_attributes_for :profile
 end

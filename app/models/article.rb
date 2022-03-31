@@ -10,5 +10,9 @@ class Article < ApplicationRecord
   # solr search
   searchable do
     text :title
+    # text :body
+    # text :comments do
+    #   comments.map { |comment| comment.body.try(:comment) }
+    # end
   end
 end

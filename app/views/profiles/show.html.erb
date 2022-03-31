@@ -1,11 +1,12 @@
-<% if current_user.avatar.attached? %>
-  <%= image_tag current_user.avatar, size: "75x75" %>
+<% if @profile.avatar.attached? %>
+  <%= image_tag @profile.avatar, size: "100x100" %><br>
 <% else %>
-  <%= image_tag "default_avatar.jpg", size: "75x75" %>
+  <%= image_tag "default_avatar.jpg", size: "100x100" %><br>
 <% end %>
-<br><br>
-<strong>Name: </strong><%= current_user %><br> 
-<strong>Email: </strong><%= current_user.email %>
+<strong>Bio: </strong><%= @profile.biography %><br><br>
+<strong>Name: </strong><%= "#{@profile.first_name} #{@profile.last_name}"%><br> 
+<strong>Phone: </strong><%= @profile.phone %><br>
+<strong>Email: </strong><%= current_user.email %><br>
 
 
 

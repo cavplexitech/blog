@@ -1,3 +1,5 @@
 class ProfilesController < ApplicationController
-  def show; end
+  def show;
+    @profile = current_user.profile 
+  end
 end

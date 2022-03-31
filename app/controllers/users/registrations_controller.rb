@@ -1,33 +1,15 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:sign_up]
+  # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
+
   def new
     build_resource({})
     resource.build_profile
     respond_with resource
-  end
-
-  protected
-
-  def sign_up_params
-    devise_parameter_sanitizer.sanitize(:sign_up) { |user| user.permit(permitted_attributes) }
-  end
-  
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: permitted_attributes)
-  end
-
-  def permitted_attributes
-    [
-      :email,
-      :password,
-      :password_confirmation,
-      profile_attributes: %i[first_name last_name phone biography]
-    ]
   end
 
   # POST /resource

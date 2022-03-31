@@ -89,9 +89,10 @@ gem 'bullet', group: 'development'
 # gem 'ruby-growl'
 # gem 'ruby_gntp'
 
-# solr search engine gem
+# solr search engine gems
 gem 'sunspot_rails', '~> 2.2', '>= 2.2.5'
 gem 'sunspot_solr'
+gem 'progress_bar'
 
 # user authentication
 gem 'devise'

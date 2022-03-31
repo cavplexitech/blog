@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'profiles/show'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations' 
+  }
 
   # Default landing page
   root 'articles#index'
