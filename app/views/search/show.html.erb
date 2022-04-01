@@ -1,0 +1,11 @@
+<% unless @search.nil? %>  
+	<% @search.each do |result| %>
+ 	<li>
+    <% if result.is_a?(Article)%>
+      <strong>Article: </strong> <%= link_to result.title, result %>
+    <% elsif result.is_a?(Profile)%>
+      <strong>Profile: </strong><%= link_to "#{result.first_name} #{result.last_name}", result %>
+    <% end %>
+ 	</li>
+ 	<% end %>
+ <% end %>

@@ -7,13 +7,9 @@ class Profile < ApplicationRecord
 
   has_one_attached :avatar
   
-#  # solr search
-#  searchable do
-#    text :first_name
-#    # text :body
-#    # text :comments do
-#    #   comments.map { |comment| comment.body.try(:comment) }
-#    # end
-#  end
+  # solr search
+  searchable do
+    text :first_name, :last_name
+  end
 end
 

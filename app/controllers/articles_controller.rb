@@ -45,17 +45,6 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def search
-    @articles = Article.search do
-      keywords(params[:query])
-    end.results
-
-    respond_to do |format|
-      format.html { render action: 'search' }
-      format.xml { render xml: @articles }
-    end
-  end
-
   private
 
   def article_params
