@@ -85,12 +85,14 @@ gem 'view_component'
 gem 'ancestry'
 
 # reducing the number of queries it makes
-gem 'bullet', group: 'development'
+# gem 'bullet', '~> 6.7', '>= 5.7.5', group: 'development'
 # gem 'ruby-growl'
 # gem 'ruby_gntp'
 
 # solr search engine gems
-gem 'sunspot_rails', '~> 2.2', '>= 2.2.5'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+gem 'sunspot_rails', github: 'sunspot/sunspot', glob: 'sunspot_rails/*.gemspec'
+# gem 'sunspot_rails', '~> 2.2', '>= 2.2.5'
 gem 'sunspot_solr'
 gem 'progress_bar'
 
