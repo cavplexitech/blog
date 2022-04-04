@@ -1,15 +1,11 @@
-<h1>Articles Home Page</h1>
-
-Our blog has <%= Article.public_count %> articles and counting!
+<h1>All Articles</h1>
 
 <ul>
   <% unless @articles.nil? %>  
   	<% @articles.each do |article| %>
-  		<% unless article.archived? %>
   		<li>
   			<%= link_to article.title, article %>
   		</li>
-  		<% end %>
   	<% end %>
   <% end %>
 </ul>

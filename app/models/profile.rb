@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -11,5 +12,6 @@ class Profile < ApplicationRecord
   searchable do
     text :first_name, :last_name
   end
+
 end
 

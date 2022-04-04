@@ -1,24 +1,32 @@
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: 'dhh', password: 'secret', only: :destroy
+  before_action :authenticate_user!
 
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    Article.reindex
-    Sunspot.commit
-    redirect_to article_path(@article)
-  end
+    @comment = @commentable.comments.new comment_params
+    @comment.user = current_user
+    @comment.commenter = "#{current_user.profile.first_name} #{current_user.profile.last_name}"
 
-  def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
-    @comment.destroy
-    redirect_to article_path(@article), status: :see_other
+    # if @commentable.is_a?(Article)
+    #   @comment.article_id = params[:article_id]
+    # else # @commentable is a Profile
+    #   @comment.profile_id = User.find(params[:user_id])
+    # end
+
+    if @comment.save
+      puts "YEY USER WAS SAVED"
+    else
+      puts @comment.errors.full_messages
+    end
+
+    puts "THIS IS AFTER THE SAVE"
+    puts @comment.inspect 
+    
+    redirect_to @commentable
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:commenter, :body, :status)
+    params.require(:comment).permit(:body)
   end
 end

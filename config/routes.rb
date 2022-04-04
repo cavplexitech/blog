@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   # Default landing page
   root 'articles#index'
-
-  resources :profiles
   get 'search/show'
 
   devise_for :users, controllers: {
@@ -13,6 +11,9 @@ Rails.application.routes.draw do
   # get "/articles/:id", to: "articles#show"
   # this the shorcut to those^
   resources :articles do
-    resources :comments
+    resources :comments, module: :articles
+  end
+  resources :profiles do
+    resources :comments, module: :profiles
   end
 end
