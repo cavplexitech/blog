@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Default landing page
   root 'articles#index'
-  get 'search/show'
+  get 'search/show' #global search
 
   devise_for :users, controllers: {
     registrations: 'users/registrations' 
@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   resources :profiles do
     resources :comments, module: :profiles
   end
+
+  put '/article/:id/like', to: 'articles#like', as: 'like'
+  delete '/article/:id/like', to: 'articles#unlike', as: 'unlike'
+
 end

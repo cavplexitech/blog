@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes, dependent: :destroy 
   belongs_to :user
 
   validates :title, presence: true
@@ -12,5 +13,9 @@ class Article < ApplicationRecord
     text :comments do
       comments.map { |comment| comment.body }
     end
+  end
+
+  def liked?(user)
+    !!self.likes.find{ |like| like.user.id == user.id}
   end
 end

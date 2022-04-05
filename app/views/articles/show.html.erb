@@ -4,15 +4,27 @@
 
 <p><strong>Author: </strong><%= "#{@article.user.profile.first_name} #{@article.user.profile.last_name}" %></p>
 
+<% num_of_likes = @article.likes.count %>
+<% if num_of_likes != 1 %>
+  <%= num_of_likes %> likes
+<% else %>
+  <%= num_of_likes %> like
+<% end %>
+
+<% if user_signed_in? %>
+  <% if @article.liked?(current_user) %>
+    <%= button_to "Unlike", unlike_path(@article), method: :delete %>
+  <% else %>
+    <%= button_to "Like", like_path(@article), method: :put %>
+  <% end %>
+<% end %><br>
+
 <ul>
 <% if can? :update, @article %>
 	<li><%= link_to "Edit", edit_article_path(@article) %></li>
 <% end %>
 <% if can? :delete, @article %>
-	<li><%= link_to "Delete", article_path(@article), data: {
-				turbo_method: :delete,
-				turbo_confirm: "Are you sure?"
-				} %></li>
+	<li><%= button_to "Delete", article_path(@article) , method: :delete %></li>
 <% end %>
 </ul>
 

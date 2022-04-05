@@ -38,9 +38,25 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def like
+    @article = Article.find(params[:id])
+    Like.create(user: current_user, article: @article)
+
+    redirect_to @article 
+  end
+
+  def unlike
+    @article = Article.find(params[:id])
+    @like = Like.find_by(user: current_user, article: @article)
+    @like.destroy 
+
+    redirect_to @article 
+  end
+
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
+    @article.errors
 
     redirect_to root_path, status: :see_other
   end
