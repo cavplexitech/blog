@@ -10,7 +10,7 @@ class Ability
     can [:create, :update, :delete], Article, user: user 
 
     return unless user.has_role? :admin
-    can [:create, :update, :delete], Article
+    can :manage, :all
      
     # ===========================================
     #

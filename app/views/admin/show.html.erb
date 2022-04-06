@@ -1,0 +1,22 @@
+<h4>Admin page</h4>
+<strong>Articles</strong>
+<ul>
+  <% unless @articles.nil? %>  
+  	<% @articles.each do |article| %>
+  		<li>
+        <%= article.title %> <%= link_to "Edit", edit_article_path(article) %> <%= button_to "Delete", article_path(article), method: :delete %><!-- , data: { "turbo_method": :delete } -->  
+  		</li>
+  	<% end %>
+  <% end %>
+</ul>
+
+<strong>Profiles</strong>
+<ul>
+  <% unless @profiles.nil? %>  
+  	<% @profiles.each do |profile| %>
+  		<li>
+  			<%= link_to profile.first_name + " " + profile.last_name, profile %>
+  		</li>
+  	<% end %>
+  <% end %>
+</ul>

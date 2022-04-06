@@ -38,6 +38,28 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search
+    @articles = Article.search do
+      keywords(params[:query])
+    end.results
+
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.xml { render xml: @articles }
+    end
+  end
+
+  def search_featured
+    @articles = Article.search do
+      with(:featured, true)
+    end.results
+
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.xml { render xml: @articles }
+    end
+  end
+
   def like
     @article = Article.find(params[:id])
     Like.create(user: current_user, article: @article)
@@ -56,14 +78,13 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    @article.errors
 
-    redirect_to root_path, status: :see_other
+    redirect_to admin_show_path, status: :see_other
   end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status) # user: current_user)
+    params.require(:article).permit(:title, :body, :status, :featured)
   end
 end

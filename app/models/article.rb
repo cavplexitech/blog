@@ -13,6 +13,7 @@ class Article < ApplicationRecord
     text :comments do
       comments.map { |comment| comment.body }
     end
+    boolean :featured
   end
 
   def liked?(user)

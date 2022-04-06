@@ -18,7 +18,7 @@
         </li>
         <% if can? :manage, @article %>
         <li class="nav-item">
-          <%= link_to "Admin", current_user.profile, class: "nav-link" %>
+          <%= link_to "Admin page", admin_show_path, class: "nav-link" %>
         </li>
       <% end %>
         <li class="nav-item">

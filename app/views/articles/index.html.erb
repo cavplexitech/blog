@@ -1,5 +1,16 @@
 <h1>All Articles</h1>
 
+<%= form_tag(search_articles_path, method: :get) do %>
+  <%= text_field_tag(:query, params[:query]) %>
+  <%= submit_tag('Search') %>
+<% end %><br>
+
+<%= form_tag(search_articles_path, method: :get) do %>
+  <%= submit_tag('See all articles') %>
+<% end %><%= form_tag(search_featured_articles_path, method: :get) do %>
+  <%= submit_tag('See featured articles') %>
+<% end %><br>
+
 <ul>
   <% unless @articles.nil? %>  
   	<% @articles.each do |article| %>
@@ -9,7 +20,6 @@
   	<% end %>
   <% end %>
 </ul>
-
 
 
 
