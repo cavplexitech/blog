@@ -6,20 +6,11 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commenter = "#{current_user.profile.first_name} #{current_user.profile.last_name}"
 
-    # if @commentable.is_a?(Article)
-    #   @comment.article_id = params[:article_id]
-    # else # @commentable is a Profile
-    #   @comment.profile_id = User.find(params[:user_id])
-    # end
-
-    if @comment.save
-      puts "YEY USER WAS SAVED"
-    else
+    unless @comment.save
+      puts "========== COMMENT ERROR MESSAGES =========="
       puts @comment.errors.full_messages
+      puts "======== END COMMENT ERROR MESSAGES ========"
     end
-
-    puts "THIS IS AFTER THE SAVE"
-    puts @comment.inspect 
     
     redirect_to @commentable
   end

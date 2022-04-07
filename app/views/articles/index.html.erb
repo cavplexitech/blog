@@ -2,14 +2,36 @@
 
 <%= form_tag(search_articles_path, method: :get) do %>
   <%= text_field_tag(:query, params[:query]) %>
-  <%= submit_tag('Search') %>
+  <%= submit_tag('Search all articles') %>
 <% end %><br>
 
-<%= form_tag(search_articles_path, method: :get) do %>
-  <%= submit_tag('See all articles') %>
-<% end %><%= form_tag(search_featured_articles_path, method: :get) do %>
-  <%= submit_tag('See featured articles') %>
-<% end %><br>
+<div class="row">
+  <div class="col-sm-1 col-md-0"  >
+    <%= form_tag(search_articles_path, method: :get) do %>
+    <%= submit_tag('See all articles') %>
+  <% end %>
+  </div>
+  <div class="col" >
+    <%= form_tag(search_featured_articles_path, method: :get) do %>
+    <%= submit_tag('See featured articles') %>
+  <% end %>
+  </div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-sm-1 col-md-1" >
+    <%= date_field(search_articles_path, method: :get) do %>
+  <% end %>
+  </div>
+  <div class="col-ml-1" >
+    <%= date_field(search_featured_articles_path, method: :get) do %>
+  <% end %>
+  </div>
+  <div class="col-ml-1" >
+    <%= submit_tag('Search within date range') %>
+  </div>
+</div><br>
 
 <ul>
   <% unless @articles.nil? %>  
