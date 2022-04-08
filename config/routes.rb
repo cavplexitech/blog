@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :comments, module: :profiles
   end
 
+  resources :friendships
+
   put '/article/:id/like', to: 'articles#like', as: 'like'
   delete '/article/:id/like', to: 'articles#unlike', as: 'unlike'
 

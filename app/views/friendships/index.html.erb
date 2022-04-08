@@ -1,0 +1,25 @@
+<h5>Friends</h5>
+<% if @friends.empty? %>
+  <strong>You have no friends. Get a life.</strong><br>
+<% else %>
+  <% @friends.sort_by { |f| f.profile.first_name }.each do |friend| %>
+   <%= link_to friend.profile.first_name + " " + friend.profile.last_name, profile_path(friend.profile) %><br>
+ <% end %>
+<% end %>
+
+<br>
+<h5>Friend Requests</h5>
+<% if @gotten_friend_requests.empty? %>
+  <strong>You have no friend requests.</strong>
+<% else %>
+<table>
+<% @gotten_friend_requests.each do |fr| %>
+  <tr>
+    <% fr_profile = User.find(fr.user_id).profile %>
+    <td><%= link_to fr_profile.first_name + " " + fr_profile.last_name, profile_path(fr_profile) %></td>
+    <td><%= button_to "Accept", friendship_path(fr, confirmed: true), method: :patch %></td>
+    <td><%= button_to "Reject", friendship_path(fr), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

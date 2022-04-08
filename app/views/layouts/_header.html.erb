@@ -16,6 +16,9 @@
         <li class="nav-item">
           <%= link_to current_user.email, current_user.profile, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Friends", friendships_path, class: "nav-link" %>
+        </li>
         <% if can? :manage, @article %>
         <li class="nav-item">
           <%= link_to "Admin page", admin_show_path, class: "nav-link" %>

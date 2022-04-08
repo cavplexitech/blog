@@ -5,9 +5,11 @@ class Ability
 
   def initialize(user)
     can :read, Article
+    can :read, Profile
 
     return unless user.present?
     can [:create, :update, :delete], Article, user: user 
+    can [:create, :update, :delete], Profile, user: user 
 
     return unless user.has_role? :admin
     can :manage, :all
