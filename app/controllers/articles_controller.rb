@@ -49,6 +49,27 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search_daterange
+    # require 'active_support/core_ext'
+
+    from = params[:from_date]
+    to = params[:to_date]
+
+    if from > to
+      redirect_to articles_path, alert: '"From" date must be less than "To" date'
+      return # redirect_to does not terminate action, this is a need
+    end
+
+    @articles = Article.search do
+      with(:created_at).between(from..to)
+    end.results
+
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.xml { render xml: @articles }
+    end
+  end
+
   def search_featured
     @articles = Article.search do
       with(:featured, true)

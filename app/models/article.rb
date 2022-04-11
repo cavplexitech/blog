@@ -10,10 +10,11 @@ class Article < ApplicationRecord
   # solr search
   searchable do
     text :title, :body
-    text :comments do
+    text :comments do # I think this needs to be :commentable
       comments.map { |comment| comment.body }
     end
     boolean :featured
+    date :created_at
   end
 
   def liked?(user)

@@ -19,20 +19,21 @@
 </div>
 
 <br>
-<div class="row">
-  <div class="col-sm-1 col-md-1" >
-    <%= date_field(search_articles_path, method: :get) do %>
-  <% end %>
-  </div>
-  <div class="col-ml-1" >
-    <%= date_field(search_featured_articles_path, method: :get) do %>
-  <% end %>
-  </div>
-  <div class="col-ml-1" >
-    <%= submit_tag('Search within date range') %>
-  </div>
-</div><br>
+<%= form_with url: search_daterange_articles_path, method: :get do |f| %>
+<table>
+  <tr>
+    <td>From: <%= f.date_field :from_date %></td>
+  </tr>
+  <tr>
+    <td>To: <%= f.date_field :to_date %></td>
+  </tr>
+  <tr>
+    <td><%= f.submit 'Search within date range' %></td>
+  </tr>
+</table>
+<% end %>
 
+<br>
 <ul>
   <% unless @articles.nil? %>  
   	<% @articles.each do |article| %>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :search_featured
+      get :search_daterange
     end
     resources :comments, module: :articles
   end
