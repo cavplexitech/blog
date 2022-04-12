@@ -1,39 +1,35 @@
 <h1>All Articles</h1>
 
-<%= form_tag(search_articles_path, method: :get) do %>
-  <%= text_field_tag(:query, params[:query]) %>
-  <%= submit_tag('Search all articles') %>
-<% end %><br>
+<!-- <#%= form_tag(search_articles_path, method: :get) do %>
+  <#%= text_field_tag(:query, params[:query]) %>
+  <#%= submit_tag('Search all articles') %>
+<#% end %><br>
+
+</div>
+<div class="col" >
+  <#%= form_tag(search_featured_articles_path, method: :get) do %>
+  <#%= submit_tag('See featured articles') %>
+<#% end %>
+</div> -->
 
 <div class="row">
   <div class="col-sm-1 col-md-0"  >
     <%= form_tag(search_articles_path, method: :get) do %>
     <%= submit_tag('See all articles') %>
   <% end %>
-  </div>
-  <div class="col" >
-    <%= form_tag(search_featured_articles_path, method: :get) do %>
-    <%= submit_tag('See featured articles') %>
-  <% end %>
-  </div>
 </div>
 
-<br>
-<%= form_with url: search_daterange_articles_path, method: :get do |f| %>
-<table>
-  <tr>
-    <td>From: <%= f.date_field :from_date %></td>
-  </tr>
-  <tr>
-    <td>To: <%= f.date_field :to_date %></td>
-  </tr>
-  <tr>
-    <td><%= f.submit 'Search within date range' %></td>
-  </tr>
-</table>
-<% end %>
+<br><br> 
 
-<br>
+<h5>Filters</h5>
+<%= form_with url: search_filter_articles_path, method: :get do |f| %>
+  From: <%= f.date_field :from_date %><br/>
+To: <%= f.date_field :to_date %><br/><br/>
+<%= f.check_box :featured, { class: 'form-check-input' }, true, false %> Featured<br/><br/>
+<%= f.text_field(:query, placeholder: 'Search title, body, comments') %><br/><br/>
+<%= f.submit 'Apply filters' %><br/><br/>
+<% end %><br/>
+
 <ul>
   <% unless @articles.nil? %>  
   	<% @articles.each do |article| %>
@@ -43,7 +39,4 @@
   	<% end %>
   <% end %>
 </ul>
-
-
-
 

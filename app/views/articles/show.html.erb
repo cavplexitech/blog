@@ -2,7 +2,7 @@
 
 <p><%= @article.body %></p>
 
-<p><strong>Author: </strong><%= "#{@article.user.profile.first_name} #{@article.user.profile.last_name}" %></p>
+<p><strong>Author: </strong><%= @article.author %></p>
 
 <% num_of_likes = @article.likes.count %>
 <% if num_of_likes != 1 %>
