@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # Default landing page
   root 'articles#index'
-  get 'search/show' #global search
+  get 'search/show' # global search
   get 'admin/show'
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations' 
+    registrations: 'users/registrations'
   }
 
   # get "/articles", to: "articles#index"
@@ -28,5 +28,4 @@ Rails.application.routes.draw do
 
   put '/article/:id/like', to: 'articles#like', as: 'like'
   delete '/article/:id/like', to: 'articles#unlike', as: 'unlike'
-
 end

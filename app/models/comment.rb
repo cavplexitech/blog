@@ -3,6 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   searchable do
-    text :body   
+    text :body
   end
 end

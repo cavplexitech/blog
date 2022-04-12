@@ -7,11 +7,9 @@ class Profile < ApplicationRecord
   validates :phone, presence: true
 
   has_one_attached :avatar
-  
+
   # solr search
   searchable do
     text :first_name, :last_name
   end
-
 end
-

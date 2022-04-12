@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def create # create new article
     @article = Article.new(article_params)
     @article.user = current_user
-    @article.author = current_user.profile.first_name + " " + current_user.profile.last_name
+    @article.author = current_user.profile.first_name + ' ' + current_user.profile.last_name
 
     if @article.save # if save was success
       redirect_to @article
@@ -50,29 +50,29 @@ class ArticlesController < ApplicationController
     end
   end
 
- # def search_daterange
- #   # require 'active_support/core_ext'
+  # def search_daterange
+  #   # require 'active_support/core_ext'
 
- #   from = params[:from_date]
- #   to = params[:to_date]
+  #   from = params[:from_date]
+  #   to = params[:to_date]
 
- #  if from > to
- #    redirect_to articles_path, alert: '"From" date must be before "To" date'
- #    return # redirect_to does not terminate action, this is a need
- #  elsif params[:from_date] == '' || params[to_date] == ''
- #    redirect_to articles_path, alert: 'Both date fields are required'
- #    return # redirect_to does not terminate action, this is a need
- #  end
+  #  if from > to
+  #    redirect_to articles_path, alert: '"From" date must be before "To" date'
+  #    return # redirect_to does not terminate action, this is a need
+  #  elsif params[:from_date] == '' || params[to_date] == ''
+  #    redirect_to articles_path, alert: 'Both date fields are required'
+  #    return # redirect_to does not terminate action, this is a need
+  #  end
 
- #   @articles = Article.search do
- #     with(:created_at).between(from..to)
- #   end.results
+  #   @articles = Article.search do
+  #     with(:created_at).between(from..to)
+  #   end.results
 
- #   respond_to do |format|
- #     format.html { render action: 'index' }
- #     format.xml { render xml: @articles }
- #   end
- # end
+  #   respond_to do |format|
+  #     format.html { render action: 'index' }
+  #     format.xml { render xml: @articles }
+  #   end
+  # end
 
   def search_filter
     # require 'active_support/core_ext'
@@ -96,7 +96,7 @@ class ArticlesController < ApplicationController
         unless params[:featured].nil? # check_box returns nil when false... weird.
           featured = ActiveModel::Type::Boolean.new.cast(params[:featured])
         end
-        with(:featured, featured) 
+        with(:featured, featured)
       end
       fulltext(params[:query])
     end.results
@@ -122,15 +122,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     Like.create(user: current_user, article: @article)
 
-    redirect_to @article 
+    redirect_to @article
   end
 
   def unlike
     @article = Article.find(params[:id])
     @like = Like.find_by(user: current_user, article: @article)
-    @like.destroy 
+    @like.destroy
 
-    redirect_to @article 
+    redirect_to @article
   end
 
   def destroy

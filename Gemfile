@@ -93,8 +93,8 @@ gem 'ancestry'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'sunspot_rails', github: 'sunspot/sunspot', glob: 'sunspot_rails/*.gemspec'
 # gem 'sunspot_rails', '~> 2.2', '>= 2.2.5'
-gem 'sunspot_solr'
 gem 'progress_bar'
+gem 'sunspot_solr'
 
 # user authentication
 gem 'devise'

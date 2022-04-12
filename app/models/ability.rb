@@ -8,12 +8,14 @@ class Ability
     can :read, Profile
 
     return unless user.present?
-    can [:create, :update, :delete], Article, user: user 
-    can [:create, :update, :delete], Profile, user: user 
+
+    can %i[create update delete], Article, user: user
+    can %i[create update delete], Profile, user: user
 
     return unless user.has_role? :admin
+
     can :manage, :all
-     
+
     # ===========================================
     #
     # Define abilities for the passed in user here. For example:

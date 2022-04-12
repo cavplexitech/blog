@@ -7,11 +7,11 @@ class CommentsController < ApplicationController
     @comment.commenter = "#{current_user.profile.first_name} #{current_user.profile.last_name}"
 
     unless @comment.save
-      puts "========== COMMENT ERROR MESSAGES =========="
+      puts '========== COMMENT ERROR MESSAGES =========='
       puts @comment.errors.full_messages
-      puts "======== END COMMENT ERROR MESSAGES ========"
+      puts '======== END COMMENT ERROR MESSAGES ========'
     end
-    
+
     redirect_to @commentable
   end
 

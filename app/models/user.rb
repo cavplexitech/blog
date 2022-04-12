@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         # :lockable, :timeoutable, :trackable
+  # :lockable, :timeoutable, :trackable
 
   has_one :profile, dependent: :destroy
   has_many :articles, dependent: :destroy
@@ -36,9 +36,9 @@ class User < ApplicationRecord
   end
 
   def send_request(user, other_user)
-    Friendship.create(user: user, friend_id: other_user.id)
+    Friendship.create(user:, friend_id: other_user.id)
   end
-  
+
   def sent_request?(id1, id2)
     Friendship.requested?(id1, id2)
   end

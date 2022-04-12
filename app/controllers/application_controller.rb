@@ -18,8 +18,7 @@ class ApplicationController < ActionController::Base
       :email,
       :password,
       :password_confirmation,
-      profile_attributes: %i[first_name last_name full_name phone biography avatar]
-    ]   
-
+      { profile_attributes: %i[first_name last_name full_name phone biography avatar] }
+    ]
   end
 end
