@@ -167,6 +167,9 @@ GEM
     okcomputer (1.18.4)
     options (2.3.2)
     orm_adapter (0.5.0)
+    paper_trail (12.3.0)
+      activerecord (>= 5.2)
+      request_store (~> 1.1)
     parallel (1.21.0)
     parser (3.1.1.0)
       ast (~> 2.4.1)
@@ -213,6 +216,8 @@ GEM
     regexp_parser (2.2.1)
     reline (0.3.1)
       io-console (~> 0.5)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -311,6 +316,7 @@ DEPENDENCIES
   jbuilder
   mini_magick
   okcomputer
+  paper_trail
   pg
   progress_bar
   puma (~> 5.0)

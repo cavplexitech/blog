@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  has_paper_trail
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, dependent: :destroy
   belongs_to :user
@@ -8,13 +9,14 @@ class Article < ApplicationRecord
 
   # solr search
   searchable do
-    text :title, :body, :author
-    join(:body, target: Comment, type: :text, join: { from: :article_id, to: :comment_id })
+    text :title, :author, :body
+    join(:body, prefix: "comment", target: Comment, type: :text, join: { from: :article_id, to: :id }, as: :comment_body)
     # text :commentable do # I think this needs to be :commentable
     #  comments.map { |comment| comment.body }
-    # end
+   # end
     boolean :featured
     date :created_at
+    integer :id
   end
 
   def liked?(user)

@@ -79,33 +79,47 @@ class ArticlesController < ApplicationController
 
     from = params[:from_date]
     to = params[:to_date]
+    # fulltext_fields = %i[title author body comment_body]
+    fulltext_fields = %i[comment_body]
 
-    @articles = Article.search do
-      all_of do
-        if (from != '' && to == '') || (from == '' && to != '') # only one of them is empty
-          redirect_to articles_path, alert: 'Both date fields are required if one is filled'
-          return
-        elsif from > to
-          redirect_to articles_path, alert: '"From" date must be before "To" date'
-          return
-        elsif !from.empty? && !to.empty?
-          with(:created_at).between(from..to)
-        end
+    search = Article.search do
+      # if (from != '' && to == '') || (from == '' && to != '') # only one of them is empty
+      #   redirect_to articles_path, alert: 'Both date fields are required if one is filled'
+      #   return
+      # elsif from > to
+      #   redirect_to articles_path, alert: '"From" date must be before "To" date'
+      #   return
+      # elsif !from.empty? && !to.empty?
+      #   with(:created_at).between(from..to)
+      # end
 
-        featured = false # default false
-        unless params[:featured].nil? # check_box returns nil when false... weird.
-          featured = ActiveModel::Type::Boolean.new.cast(params[:featured])
-        end
-        with(:featured, featured)
-      end
-      fulltext(params[:query])
-    end.results
+      #  featured = false # default false
+      #  unless params[:featured].nil? # check_box returns nil when false.
+      #    featured = ActiveModel::Type::Boolean.new.cast(params[:featured])
+      #  end
+      #  with(:featured, featured)
+       #fulltext(params[:query], fields: [:title, :author, :body, :comment_body]) # , :article_body])
+      # any do
+      #unless params[:query].empty?
+      fulltext params[:query], fields: fulltext_fields, query_phase_slop: 0, minimum_match: 0
+      #raise params[:comment_id].inspect
+      #end
+      # fulltext params[:query] do
+      #   fields(:title, :author, :body, :comment_body)#, :comment_body)
+      # end
+      
+      #  fulltext(params[:query], fields: [:comment_body])
+      #end
+    end
+
+    @articles = search.results
 
     respond_to do |format|
       format.html { render action: 'index' }
       format.xml { render xml: @articles }
     end
   end
+
 
   def search_featured
     @articles = Article.search do

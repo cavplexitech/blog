@@ -1,6 +1,21 @@
-<div>
+<% if comment.is_root? %>
+<div class="media-body">
   <p>
-  <%= comment.commenter %><br>
-  <%= comment.body %>
+  <strong><%= comment.commenter %><br/></strong>
+    <%= comment.body %>
   </p>
+  <%= nested_comments comment.children.arrange(order: :created_at) %>
+  <% if params[:controller] == "profiles" %>
+  <div style="margin-left: 40px">
+  <%= render "comments/form", { commentable: @profile, parent: comment } %>
+    </div>
+  <% else %>
+  <div style="margin-left: 40px">
+  <%= render "comments/form", { commentable: @article, parent: comment } %>
+    </div>
+  <% end %>
+  <!--<i>
+    <#%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>
+  </i>-->
 </div>
+<% end %>

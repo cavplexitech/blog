@@ -1,12 +1,12 @@
 <%= form_for [commentable, Comment.new] do |f| %>
+<%= "#{current_user.profile.first_name} #{current_user.profile.last_name}" %><br/>
 
-<div>
-  <%= "#{current_user.profile.first_name} #{current_user.profile.last_name}" %>
-</div>
-
-<div>
-	<%= f.text_area :body %><br>
-</div> 
-
-<%= f.submit %>
+<% if defined?(parent) %>
+<%= f.hidden_field :parent_id, value: parent.id %>
 <% end %>
+
+<%= f.text_area :body, rows: 1 %><br>
+<%= f.submit "Comment" %>
+
+<% end %><br/>
+
